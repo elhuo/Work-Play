@@ -1,18 +1,65 @@
-const express = require('express')
-const app = express()
-const server = require('http').Server(app)
-const io = require('socket.io')(server)
-const {v4: uuidV4} = require('uuid')
+var express = require('express')
+var app = express()
+var http = require('http').Server(app)
+var io = require('socket.io')(http)
 
-app.set('view engine', 'ejs')
-app.use(express.static('public'))
+app.use(express.static(__dirname+"/"))
 
-app.get('/', (req, res) => {
-    res.redirect(`/${roomId}`)
+let clients = 0
+
+io.on('connection', function(socket){
+
+socket.on('userconnected', function(data){
+ clients++
+    if(clients <3){
+if(clients == 2) {
+
+    this.emit('sendOffer')
+}
+
+    }
+else{
+
+    this.emit('sessionActive')
+}
+
 })
 
-app.get('/:room', (req, res) => {
-    res.render('room', {roomId: req.params.room})
+socket.on('sendingOffer', function(data){
+this.broadcast.emit('broadcastingOffer',data)
+
+})
+
+socket.on('answer', function(data){
+this.broadcast.emit('response',data)
+
+})
+
+socket.on('disconnect', function(){
+    clients--
+    this.emit('disconnectingvideo')
+})
+
+socket.on('messages',function(data){
+    io.sockets.emit('broadcastmessage',data)
+})
+
+})
+
+var server = http.listen(3000, ()=>{
+
+var host = server.address().address
+var port = server.address().port
+
+console.log('listening at port'+port+" and host "+host)
+})   socket.on('join-room', (roomId, userId) => {
+        socket.join(roomId)
+        socket.to(roomId).broadcast.emit('user-connected', userId)
+
+        socket.on('disconnect', () => {
+            socket.to(roomId).broadcast.emit('user-disconnected', userId)
+        })
+    })
 })
 
 server.listen(3000)
