@@ -12,12 +12,17 @@
     <script type="text/javascript">
         window.onload=function(){
             document.getElementById("btnRegister").onclick=function(){
-                if(document.getElementById("Password1").value!=document.getElementById("Password2").value){
-                    window.alert("密码前后输入不一致！");
+                if (document.getElementById("CheckRead").checked==false){
+                    window.alert("You must accept the user Contract");
                 }else{
-                    window.alert("注册成功");
-                    window.close();
+                    if(document.getElementById("Password1").value!=document.getElementById("Password2").value){
+                        window.alert("The password entered before and after is inconsistent!");
+                    }else{
+                        window.alert("Sign up Successfully");
+                        window.close();
+                    }
                 }
+
             }
         }
     </script>
@@ -42,13 +47,13 @@
             <div class="reg-form">
                 <form action="">
                     <ul>
-                        <li><label for="">Phone Number:</label><input type="text" class="inp" id="phone"><span class="error"></span></li>
-                        <li><label for="">Confirmation Code:</label><input type="text" class="inp" id="CCode"><span class="success"></span></li>
-                        <li><label for="">Password:</label><input type="password" class="inp" name="Password1" id="Password1"><span class="error"></span></li>
+                        <li><label for="">Name:</label><input type="text" class="inp" id="name" placeholder=" Required"><span class="success"></span></li>
+                        <li><label for="">Phone Number:</label><input type="text" class="inp" id="phone" placeholder=" Required"><span class="error"></span></li>
+                        <li><label for="">Password:</label><input type="password" class="inp" name="Password1" id="Password1" placeholder=" Required"><span class="error"></span></li>
                         <li class="safe">Security Level <em class="poor">Poor</em> <em class="med">Medium</em> <em class="strong">Strong</em></li>
-                        <li><label for="">Confirm Password:</label><input type="password" class="inp" name="Password2" id="Password2"><span class="error"></span></li>
-                    <li class="agree"><input type="checkbox" name="" id="">Accept and sign up <a href="#">User Contract</a></li>
-                    <li> <input type="submit" button type="button" value="Submit" id="btnRegister" onclick=""></inputbutton></li>
+                        <li><label for="">Confirm Password:</label><input type="password" class="inp" name="Password2" id="Password2" placeholder=" Required"><span class="error"></span></li>
+                        <inputcheckbox class="agree"><input type="checkbox" name="" id="CheckRead" onclick=""></inputcheckbox>>Accept and sign up <a href="#">User Contract</a></li>
+                    <li> <input type="submit" button type="button" value="Submit" id="btnRegister" onclick="" class="btn"></inputbutton></li>
                 </ul>
                 </form>
             </div>
