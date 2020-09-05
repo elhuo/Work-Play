@@ -9,6 +9,23 @@
     <link rel="stylesheet" href="css/register.css">
 </head>
 <body>
+    <script type="text/javascript">
+        window.onload=function(){
+            document.getElementById("btnRegister").onclick=function(){
+                if (document.getElementById("CheckRead").checked==false){
+                    window.alert("You must accept the user Contract");
+                }else{
+                    if(document.getElementById("Password1").value!=document.getElementById("Password2").value){
+                        window.alert("The password entered before and after is inconsistent!");
+                    }else{
+                        window.alert("Sign up Successfully");
+                        window.close();
+                    }
+                }
+
+            }
+        }
+    </script>
     <!-- 快捷导航模块 start -->
     <section class="shortcut">
 
@@ -30,13 +47,13 @@
             <div class="reg-form">
                 <form action="">
                     <ul>
-                        <li><label for="">Phone Number:</label><input type="text" class="inp"><span class="error"></span></li>
-                        <li><label for="">Confirmation Code:</label><input type="text" class="inp"><span class="success"></span></li>
-                        <li><label for="">Password:</label><input type="text" class="inp"><span class="error"></span></li>
+                        <li><label for="">Name:</label><input type="text" class="inp" id="name" placeholder=" Required"><span class="success"></span></li>
+                        <li><label for="">Phone Number:</label><input type="text" class="inp" id="phone" placeholder=" Required"><span class="error"></span></li>
+                        <li><label for="">Password:</label><input type="password" class="inp" name="Password1" id="Password1" placeholder=" Required"><span class="error"></span></li>
                         <li class="safe">Security Level <em class="poor">Poor</em> <em class="med">Medium</em> <em class="strong">Strong</em></li>
-                        <li><label for="">Confirm Password:</label><input type="text" class="inp"><span class="error"></span></li>
-                    <li class="agree"><input type="checkbox" name="" id="">Accept and sign up <a href="#">User Contract</a></li>
-                    <li> <input type="submit" value="Submit" class="btn"></li>
+                        <li><label for="">Confirm Password:</label><input type="password" class="inp" name="Password2" id="Password2" placeholder=" Required"><span class="error"></span></li>
+                        <inputcheckbox class="agree"><input type="checkbox" name="" id="CheckRead" onclick=""></inputcheckbox>>Accept and sign up <a href="#">User Contract</a></li>
+                    <li> <input type="submit" button type="button" value="Submit" id="btnRegister" onclick="" class="btn"></inputbutton></li>
                 </ul>
                 </form>
             </div>
@@ -48,7 +65,7 @@
                         <a href="#">Contact us if you want to add a game </a> |
                         <a href="#"> Business</a>
                     </div>
-                    <div class="copyright">Thank you for using our site!  <p> &copy Paulette Rene and Sally Wilfred </p></div>
+                    <div class="copyright">Thank you for using our site!</div>
                 </div>
             </div>
         </footer>
