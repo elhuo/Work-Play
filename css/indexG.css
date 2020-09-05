@@ -59,3 +59,12 @@
 .sk_bd ul li:hover{
     border: 3px solid  #f8b12c;
 }
+.description{
+    background-color:rgb(238, 238, 238);
+    padding: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
